@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .btns{
+            display: flex;
+            flex-direction: column;
+        }
+        .card{
+            margin: 10px;
+        }
+        #paisagem{
+            height: 80vh;
+            width: 80vw;
+            border: solid rgb(183, 182, 182) 6px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+            background-color: rgb(230, 230, 230);
+        }
+        #contain{
+            display: flex;
+            flex-direction: row;
+        }
+        #personagem{
+            height: 200px;
+            width: 200px;
+            border: black solid 3px;
+            border-radius: 10px;
+            gap: 5px;
+        }
+        #personagem2{
+            height: 200px;
+            width: 200px;
+            border: black solid 3px;
+            border-radius: 10px;
+        }
+        #personagem1{
+            height: 200px;
+            width: 200px;
+            border: black solid 3px;
+            border-radius: 10px;
+        }
+        .capivara{
+            background-image: url(https://pt.wikifur.com/w/images/0/0c/Capivara.gif);
+            background-size: 100% 100%;
+        }
+        .ari{
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBu0Yx-rf5tKAAkd7RcyEEtkDkxsMmudhBpA&s);
+            background-size: 100% 100%;
+        }
+        .galao{
+            background-image: url(https://cms.brawlhalla.com/c/uploads/2022/03/WuShangSplash.png);
+            background-size: 100% 100%;
+        }
+        .morte{
+            background-image: url(https://i.gifer.com/origin/a0/a07ad08920f303f655251b1a0b353b86_w200.gif);
+            background-size: 100% 100%;
+        }
+        .paisagem{
+            background-image: url(https://cidadeitapetininga.com.br/wp-content/uploads/2020/07/etec-2-scaled-1.jpg);
+        }
+        .destruir{
+            background-image: url(https://media.tenor.com/nANqORN7qhQAAAAM/explosion-explode.gif);
+            background-color: orange;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <div id="paisagem">
+        <div id="contain">
+            <div id="personagem1" class="card">
+            </div>
+
+            <div id="personagem" class="card">
+            </div>
+
+            <div id="personagem2" class="card">
+            </div>
+        </div>
+        <div class="btns">
+            <button onclick="capivarajumpscare()">capivara</button>
+            <button onclick="tudo()">tudo</button>
+            <button onclick="capivaradeath()">SEU MONSTRO</button>
+        </div>
+    </div>
+        <div class="otherbtns">
+            <button onclick="mostrarpai()">paisagem</button>
+            <button onclick="destruirpai()">destruir ecossistema</button>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    function capivarajumpscare() {
+        let capivara = document.querySelector("#personagem")
+        capivara.classList.add('capivara')
+    }
+    function tudo() {
+        let ari = document.getElementById("personagem1")
+        ari.classList.add('ari')
+
+        let galao = document.getElementById("personagem2")
+        galao.classList.add('galao')
+       
+    }
+    function capivaradeath() {
+        let capivara = document.querySelector("#personagem")
+        capivara.classList.remove('capivara')
+        capivara.classList.add('morte')
+
+        let ari = document.getElementById("personagem1")
+        ari.classList.remove('ari')
+        ari.classList.add('morte')
+
+        let galao = document.getElementById("personagem2")
+        galao.classList.remove('galao')
+        galao.classList.add('morte')
+
+        var audio = new Audio('explosion.mp3')
+            audio.addEventListener('canplaythrough', function () {
+                audio.play()
+            })
+        setTimeout(() => {
+            capivara.classList.remove('morte')
+            ari.classList.remove('morte')
+            galao.classList.remove('morte')
+        }, 1000);
+    }
+    function mostrarpai() {
+        let paisagem = document.querySelector('#paisagem')
+        paisagem.classList.add('paisagem')
+    }
+    function destruirpai() {
+        let paisagem = document.querySelector('#paisagem')
+        paisagem.classList.remove('paisagem')
+        paisagem.classList.add('destruir')
+
+        var audio = new Audio('explosion.mp3')
+            audio.addEventListener('canplaythrough', function () {
+                audio.play()
+            })
+        setTimeout(() => {
+            paisagem.classList.remove('destruir')
+        }, 2000);
+    }
+</script>
+</html>
